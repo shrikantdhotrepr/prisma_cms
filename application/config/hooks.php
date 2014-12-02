@@ -10,6 +10,13 @@
 |
 */
 
+$hook['display_override'] = array(
+    'class' => 'Minifyhtml',
+    'function' => 'output',
+    'filename' => 'Minifyhtml.php',
+    'filepath' => 'hooks',
+    'params' => array()
+);
 
 
 /* End of file hooks.php */

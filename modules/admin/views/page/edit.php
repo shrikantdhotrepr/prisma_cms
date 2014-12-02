@@ -20,13 +20,12 @@ $select         =   "<select type=\"text\" class=\"form-control\" name=\"%s\" >%
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <?php echo $title; ?>
-        <small>Edit Page</small>
+        <?php echo $title . "<small>Edit ".$title."</small>"; ?>
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin');?>"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">Pages</li>
-        <li class="active">Edit Page</li>
+        <li class="active"><?php echo $title ?></li>
+        <li class="active">Edit <?php echo $title ?></li>
     </ol>
 </section>
 
@@ -36,7 +35,7 @@ $select         =   "<select type=\"text\" class=\"form-control\" name=\"%s\" >%
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Edit Page</h3>
+                    <h3 class="box-title">Edit <?php echo $title ?></h3>
                 </div>
                 <!-- /.box-header -->
                 <?php echo form_open_multipart(); ?>
@@ -80,15 +79,4 @@ $select         =   "<select type=\"text\" class=\"form-control\" name=\"%s\" >%
 
     
 </section>
-<!-- /.content -->
-<!-- InputMask -->
-<script src="<?php echo BASE_AJS ?>plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-<script src="<?php echo BASE_AJS ?>plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-    $(function(){ $(".textarea").wysihtml5(); });
-    $('[name=created_date]').datepicker({
-           minDate: new Date()
-       });
-</script>
 

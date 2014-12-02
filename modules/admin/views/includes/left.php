@@ -37,4 +37,5 @@
     </li>
     <li<?php echo ( $nav == 3 ) ? ' class="active"' : '' ?>><a href="<?php echo web('admin/media') ?>"><i class="fa fa-picture-o"></i><span>Media</span></a></li>
     <li<?php echo ( $nav == 4 ) ? ' class="active"' : '' ?>><a href="<?php echo web('admin/page') ?>"><i class="fa fa-book"></i><span>Pages</span></a></li>
+    <li<?php echo ( $nav == 5 ) ? ' class="active"' : '' ?>><a href="<?php echo web('admin/category') ?>"><i class="fa fa-dot-circle-o"></i><span>Categories</span></a></li>
 </ul>

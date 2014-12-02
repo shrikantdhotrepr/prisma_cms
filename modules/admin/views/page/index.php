@@ -1,12 +1,10 @@
-<?php ?>
 <section class="content-header">
     <h1>
-        <?php echo 'Slider' ?>
-        <small>List Of Pages</small>
+        <?php echo $title . "<small>List Of ".$title."</small>"; ?>
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin'); ?>"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">Page List</li>
+        <li class="active"><?php echo $title ?> List</li>
     </ol>
 </section>
 
@@ -16,9 +14,9 @@
     <div class="col-md-8">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Page</h3>
+                <h3 class="box-title"><?php echo $title?></h3>
                 <div class="box-tools pull-right">
-                    <a href="<?php echo base_url('admin/page/add')?>"><button type="button" class="btn btn-info">Add Page</button></a>
+                    <a href="<?php echo base_url('admin/page/add')?>"><button type="button" class="btn btn-info">Add <?php echo $title?></button></a>
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body">
@@ -40,10 +38,10 @@
                         <?php 
                         $i = 1;
                         $td     =   "<td>%s</td>";
-                        $img     =   "<td><img src=\"".base_url('media/%s')."\" width=\"150px\" ></td>";
+                        $img     =   "<td><img src=\"".web('media/%s')."\" width=\"150px\" ></td>";
                         $action =   "<td>
-                            <a href=\"".base_url('admin/page/edit/%s')."\"><i class=\"fa fa-edit\"></i></a>
-                            <a href=\"".base_url('admin/page/delete/%s')."\"><i class=\"fa fa-times\"></i></a></td>";
+                            <a href=\"".web('admin/page/edit/%s')."\"><i class=\"fa fa-edit\"></i></a>
+                            <a href=\"".web('admin/page/delete/%s')."\"><i class=\"fa fa-times\"></i></a></td>";
                         foreach ($details as $row): 
                             $id     =   base64_encode( ENCRYPT_KEY .".". $row->page_id );
                             echo    "<tr>";

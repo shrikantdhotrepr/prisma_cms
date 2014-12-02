@@ -1,4 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Page extends MX_Controller {
 
@@ -8,8 +11,8 @@ class Page extends MX_Controller {
     public function __construct() {
         parent :: __construct();
         no_cache();
-        if (!$this->session->userdata('is_admin_login')) redirect(base_url() . 'admin/login');
-        
+        if (!$this->session->userdata('is_admin_login'))
+            redirect(base_url() . 'admin/login');
         $this->load->model('mdl_page', 'page');
         $this->load->model('mdl_admin', 'admin');
         $this->data['module'] = 'admin';
@@ -19,10 +22,9 @@ class Page extends MX_Controller {
         $this->pagination_config['uri_segment'] = '4';
         $this->pagination_config['per_page'] = PER_PAGE;
     }
-
+    
     public function index() {
-        
-        $this->pagination_config['base_url'] = base_url('admin/pages/index');
+        $this->pagination_config['base_url'] = base_url('admin/page/index');
         $this->pagination_config['total_rows'] = $this->page->count();
         $this->pagination->initialize($this->pagination_config);
         $this->data['details'] = $this->page->get();
@@ -43,29 +45,27 @@ class Page extends MX_Controller {
     }
 
     public function edit($rid = 0) {
-        $this->data['id'] = $this->decode_id($rid, 'pages');
+        $this->data['id'] = $this->decode_id($rid);
         $this->form_validation->set_rules('title', '', 'required');
         $this->form_validation->set_rules('description', '', 'required');
         if ($this->form_validation->run() == TRUE):
-            $this->page->update( $this->data['id'] );
+            $this->page->update($this->data['id']);
             $this->session->set_flashdata('success', 'Page is Updated!');
             redirect('admin/page');
         endif;
 
-        $this->data['id'] = $this->decode_id($rid, 'page');
-        $this->data['details'] = $this->page->get( 1 , $this->data['id']);
+        $this->data['details'] = $this->page->get(1, $this->data['id']);
         $this->data['view_file'] = 'page/edit';
         echo Modules::run('theme/admin', $this->data);
     }
 
     public function delete($rid = 0) {
-        $this->data['id'] = $this->decode_id($rid, 'page');
+        $this->data['id'] = $this->decode_id($rid);
         $this->page->delete($this->data['id']);
         $this->session->set_flashdata('success', 'Page has been deleted!');
         redirect('admin/page');
     }
 
-    
     public function decode_id($rid, $function) {
         $encoded = base64_decode($rid);
         @list($code, $id) = @explode('.', $encoded);

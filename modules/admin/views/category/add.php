@@ -41,25 +41,11 @@ $select     = "<select type=\"text\" class=\"form-control\" name=\"%s\" >%s</sel
             <?php echo form_open_multipart(); ?>
             <div class="box-body">
                 <?php
-                $value = set_value('title');
-                $input_field = sprintf($input, 'title', 'Enter...', $value);
-                $field = (form_error('title') != '') ? $form_error : $form;
-                echo sprintf($field, 'Title', $input_field);
+                $value = set_value('name');
+                $input_field = sprintf($input, 'name', 'Enter...', $value);
+                $field = (form_error('name') != '') ? $form_error : $form;
+                echo sprintf($field, 'Category Name', $input_field);
 
-                $value = set_value('description');
-                $input_field = sprintf($textarea, 'ckeditor' , 'description', 'Enter...', $value);
-                $field = (form_error('description') != '') ? $form_error : $form;
-                echo sprintf($field, 'Description', $input_field);
-
-                $value = set_value('meta_keywords');
-                $input_field = sprintf($textarea, '' , 'meta_keywords', 'Enter...', $value);
-                $field = (form_error('meta_keywords') != '') ? $form_error : $form;
-                echo sprintf($field, 'Meta Keywords', $input_field);
-
-                $value = set_value('meta_description');
-                $input_field = sprintf($textarea, '' , 'meta_description', 'Enter...', $value);
-                $field = (form_error('meta_description') != '') ? $form_error : $form;
-                echo sprintf($field, 'Meta Description', $input_field);
 
                 ?>
             </div>
